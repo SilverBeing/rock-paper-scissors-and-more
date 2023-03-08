@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+/*eslint-disable */
+import { useState, useEffect } from "react";
 import useGame from "../hooks/useGame";
 import JudgeWinner from "../components/GameComponents/JudgeWinner";
 import Playground from "../components/GameComponents/Playground";

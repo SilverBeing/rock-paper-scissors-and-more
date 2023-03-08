@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { useEffect, useState } from "react";
 import useGame from "../../hooks/useGame";
 import GameConsole from "./GameConsole";
