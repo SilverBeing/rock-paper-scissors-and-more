@@ -3,7 +3,7 @@ import useGame from "../../hooks/useGame";
 
 const WhoWins = ({ handleStartGame }) => {
   const [game] = useGame();
-  const [winner, setWinner] = useState(game.whoWon);
+  const [winner, setWinner] = useState();
   const playerChoice = game.playerChoice;
 
   const handleWinner = (value) => {
@@ -31,7 +31,7 @@ const WhoWins = ({ handleStartGame }) => {
 
   useEffect(() => {
     win();
-  }, [game.startGame]);
+  }, [game.startGame, game.computerChoice, game.playerChoice]);
 
   return (
     <div className="win-board">

@@ -1,9 +1,4 @@
-import useGame from "../../hooks/useGame";
-
 const GameConsole = ({ name, icon, handleClick, player }) => {
-  console.log(name);
-  const [game] = useGame();
-
   return (
     <div className={`cursor `}>
       <h1>{player}</h1>

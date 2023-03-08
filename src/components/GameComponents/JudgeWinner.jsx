@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useGame from "../../hooks/useGame";
 import GameConsole from "./GameConsole";
 import WhoWins from "./WhoWins";
@@ -8,10 +8,6 @@ const JudgeWinner = ({ gameData, handleStartGame, choices }) => {
   const [computerChoice, setComputerChoice] = useState(game.computerChoice);
   const playerChoice = game.playerChoice;
 
-  const playerOne = gameData.filter((player) => player.value === playerChoice);
-  const computerPlays = gameData.filter(
-    (computer) => computer.value === computerChoice
-  );
   const computerPicks = Math.ceil(Math.random() * choices.length - 1);
   const startComputer = () => {
     const result = choices.at(computerPicks);
@@ -21,11 +17,15 @@ const JudgeWinner = ({ gameData, handleStartGame, choices }) => {
 
   useEffect(() => {
     startComputer();
-  }, []);
+  }, [!game.startGame, game.playerChoice]);
+  const playerOne = gameData.filter((player) => player.value === playerChoice);
+  const computerPlays = gameData.filter(
+    (computer) => computer.value === computerChoice
+  );
 
   return (
     <div className="judge-container">
-      <div>
+      <>
         {playerChoice &&
           playerOne.map((choice) => (
             <GameConsole
@@ -34,15 +34,15 @@ const JudgeWinner = ({ gameData, handleStartGame, choices }) => {
               player={"You Picked"}
             />
           ))}
-      </div>
-      <div>
+      </>
+      <>
         {playerChoice && computerChoice ? (
           <WhoWins handleStartGame={handleStartGame} />
         ) : (
           ""
         )}
-      </div>
-      <div>
+      </>
+      <>
         {computerChoice &&
           computerPlays.map((choice) => (
             <GameConsole
@@ -51,7 +51,7 @@ const JudgeWinner = ({ gameData, handleStartGame, choices }) => {
               player={"Computer Picked"}
             />
           ))}
-      </div>
+      </>
     </div>
   );
 };

@@ -7,10 +7,10 @@ const GameContextProvider = ({ children }) => {
     startGame: true,
     playerChoice: "",
     computerChoice: "",
-    score: 0,
     whoWon: "",
     difficulty: "easy",
   });
+
   return (
     <gameContext.Provider value={[game, setGame]}>
       {children}
