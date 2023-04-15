@@ -25,7 +25,7 @@ const OverallPlayground = ({ choices, difficulty, setScore, score }) => {
     game.playerChoice = value;
   };
   const updateScore = () => {
-    if (whoWon === "Player" && game.startGame === false) {
+    if (whoWon === "Player") {
       setScore((prev) => prev + 1);
     }
   };
